@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+  api:
+    image: api
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Live
+    ports:
+    - 8888:80
+    depends_on:
+    - postgres
+    - seq
+    networks:
+      - postgres
+ 
+  seq:
+  
+    image: datalust/seq:latest
+    ports:
+      - 8989:80
+    environment:
+      ACCEPT_EULA: "Y"
+    networks:
+      - postgres
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Admin@123
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+networks:
+    postgres:
+      driver: bridge
+volumes:
+    postgres:

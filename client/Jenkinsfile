@@ -1,0 +1,134 @@
+pipeline {
+    agent any
+    environment {
+        REGISTRY = 'registry.ekbana.net'
+        HARBOR_NAMESPACE = "tcm"
+        HARBOR_CREDENTIAL = credentials('tcm-cred')
+        APP_NAME = "tcm-frontend"
+        DIR_NAME = getDirName(env.BRANCH_NAME)
+    }
+    stages {
+        stage('get_commit_msg') {
+            steps {
+              script {
+                notifyStarted()
+                passedBuilds = []
+                lastSuccessfulBuild(passedBuilds, currentBuild);
+                env.changeLog = getChangeLog(passedBuilds)
+                echo "changeLog \n${env.changeLog}"
+              }
+            }
+        }
+        stage("Checkout code") {
+            steps {
+                checkout scm
+            }
+        }
+        stage("Build image") {
+            steps {
+                sh 'docker build -t $REGISTRY/$HARBOR_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER .'
+            }
+        }
+        stage("Harbor login & Push image") {
+            steps {
+                sh '''echo $HARBOR_CREDENTIAL_PSW | docker login $REGISTRY -u 'robot$tcm+tcm_user' --password-stdin'''
+                sh 'docker push  $REGISTRY/$HARBOR_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER'
+                sh 'docker rmi $REGISTRY/$HARBOR_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER'
+            }
+        }
+        stage('Deploy to dev server') {
+            steps{
+              script {
+                sshagent(['72c3455a-de8d-4b39-9f02-771ddb2fdf00']) {
+                sh '''
+                ssh -tt -o StrictHostKeyChecking=no root@157.230.43.157 -p 3030 << EOF
+                cd $DIR_NAME; \
+                cat ~/.docker/harbor.txt | docker login registry.ekbana.net --username 'robot$tcm+tcm_user' --password-stdin; \
+                docker pull  $REGISTRY/$HARBOR_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER; \
+                docker-compose -f docker-compose.yml down; \
+                BUILD_NUMBER=$BUILD_NUMBER docker-compose -f docker-compose.yml up -d; \
+                docker image prune -a -f; \
+                exit
+            EOF '''
+              }
+            }
+          }    
+        }
+      }
+
+    post{
+      success{
+        //script {
+          //if (env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'QA' || env.BRANCH_NAME == 'UAT' )
+            notifySuccessful()
+        //}
+      }
+      failure{
+        notifyFailed()
+      }
+    }
+}
+
+def notifyStarted() {
+mattermostSend (
+  color: "#2A42EE",
+  channel: 'tcm-jenkins',
+  endpoint: 'https://ekbana.letsperk.com/hooks/h913wkuawbg4jmhbfs3rx1s7xw',
+  message: "Build STARTED: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
+  )
+}
+
+
+def notifySuccessful() {
+mattermostSend (
+  color: "#00f514",
+  channel: 'tcm-jenkins',
+  endpoint: 'https://ekbana.letsperk.com/hooks/h913wkuawbg4jmhbfs3rx1s7xw',
+  message: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>):\n${changeLog}"
+  )
+}
+
+def notifyFailed() {
+mattermostSend (
+  color: "#e00707",
+  channel: 'tcm-jenkins',
+  endpoint: 'https://ekbana.letsperk.com/hooks/h913wkuawbg4jmhbfs3rx1s7xw',
+  message: "Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
+  )
+}
+def lastSuccessfulBuild(passedBuilds, build) {
+  if ((build != null) && (build.result != 'SUCCESS')) {
+      passedBuilds.add(build)
+      lastSuccessfulBuild(passedBuilds, build.getPreviousBuild())
+   }
+}
+
+@NonCPS
+def getChangeLog(passedBuilds) {
+    def log = ""
+    for (int x = 0; x < passedBuilds.size(); x++) {
+        def currentBuild = passedBuilds[x];
+        def changeLogSets = currentBuild.changeSets
+        for (int i = 0; i < changeLogSets.size(); i++) {
+            def entries = changeLogSets[i].items
+            for (int j = 0; j < entries.length; j++) {
+                def entry = entries[j]
+                log += "* ${entry.msg} by ${entry.author} \n"
+            }
+        }
+    }
+    return log;
+  }
+
+//Getting branch name for respective branches
+def getDirName(branchName) {
+    if("dev".equals(branchName)) {
+        return "/var/www/tcm/frontend/dev";
+    } else if ("qa".equals(branchName)) {
+        return "/var/www/tcm/frontend/qa";
+    } else if ("uat".equals(branchName)) {
+        return "/var/www/tcm/frontend/uat";
+    } else {
+        return "/var/www/tcm/frontend/master";
+    }
+}

@@ -1,0 +1,79 @@
+.ant-layout-sider{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 70px;
+    max-width: 250px !important;
+    min-width: 250px !important;
+    width: 250px !important;
+    z-index: 9;
+
+    .ant-layout-sider-trigger{
+        background-color: transparent;
+        width: 250px !important;
+        display: flex;
+        .ant-menu{
+            width: inherit;
+        }
+    }
+
+    .ant-menu{
+        background-color: transparent;
+    }
+    .anticon{
+        font-size: 16px;
+    }
+    ul{
+        height: 100%;
+        .ant-menu-item{
+            font-weight: 500;
+            align-items: center;
+            display: flex;
+
+        }
+        .ant-menu-title-content{
+            width: 100%;
+            transition: all 0.5s ease;
+            opacity: 1;
+            visibility: visible;
+            max-width: 100%;
+        }
+    }
+    .ant-typography{
+        padding: 15px 24px 10px;
+        display: block;
+    }
+    &.ant-layout-sider-collapsed{
+        max-width: 80px !important;
+        min-width: 80px !important;
+        width: 80px !important;
+
+        .ant-layout-sider-trigger{
+            justify-content: center;
+            width: 80px !important;
+
+        }
+        .ant-menu-submenu-arrow{
+            display: none;
+        }
+        .ant-menu-item, .ant-menu-submenu-title{
+            justify-content: center;
+            padding: 0 16px !important;
+            text-align: center;
+        }
+        .ant-menu-title-content, .-title-content{
+            margin-left: 0;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            max-width: 0;
+            // display: none;
+            display: inline-flex;
+            
+        }
+        .ant-typography{
+            display: none;
+        }
+    }
+   
+}

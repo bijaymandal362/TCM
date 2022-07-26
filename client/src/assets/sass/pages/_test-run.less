@@ -1,0 +1,637 @@
+div.passed {
+  color: @passed-status;
+}
+div.failed {
+  color: @failed-status;
+}
+div.blocked {
+  color: @blocked-status;
+}
+div.pending {
+  color: @pending-status;
+}
+
+span.passed,
+button.passed {
+  background-color: @passed-status;
+  color: white;
+  &:hover,
+  &:focus {
+    background-color: @passed-status;
+  }
+}
+span.failed,
+button.failed {
+  background-color: @failed-status;
+  color: white;
+  &:hover,
+  &:focus {
+    background-color: @failed-status;
+  }
+}
+span.blocked,
+button.blocked {
+  background-color: @blocked-status;
+  color: white;
+  &:hover,
+  &:focus {
+    background-color: @blocked-status;
+  }
+}
+span.pending,
+button.pending {
+  background-color: @pending-status;
+  color: white;
+  &:hover,
+  &:focus {
+    background-color: @pending-status;
+  }
+}
+
+.table-action {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.test-run-home {
+  .ant-input {
+    max-width: 325px;
+    margin-left: 20px;
+  }
+}
+
+.test-run-link {
+  color: @heading-color;
+}
+
+.test-run-dashboard {
+  & > div:first-child {
+    padding-right: 15px;
+  }
+
+  .ant-collapse-header {
+    width: fit-content;
+
+    &-text > div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .header {
+    margin-bottom: 20px;
+
+    & > div:first-child {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      & > div:first-child {
+        display: flex;
+        align-items: center;
+
+        span {
+          font-size: 18px;
+          margin-right: 15px;
+          cursor: pointer;
+        }
+
+        h3 {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    & > .ant-typography {
+      margin-left: 35px;
+    }
+  }
+
+  .test-case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .ant-input {
+      width: 300px;
+    }
+
+    .left-side-header {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .table-layout {
+    table-layout: fixed;
+
+    .header-checkbox {
+      width: 30px;
+    }
+
+    .table-status {
+      cursor: pointer;
+    }
+  }
+
+  .right-container {
+    padding-left: 15px;
+    border-left: 1px solid @border-bottom-color;
+
+    .progress-circle {
+      display: flex;
+      justify-content: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .detail > div:first-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .ant-collapse {
+    margin-bottom: 20px;
+
+    &-header {
+      display: flex;
+      align-items: center;
+      padding-bottom: 0px !important;
+
+      h5 {
+        margin-bottom: 0;
+      }
+
+      &-text {
+        display: contents;
+
+        .ant-progress {
+          width: 200px;
+          margin-left: 15px;
+          cursor: auto;
+        }
+      }
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border-bottom: 1px solid @table-border;
+      text-align: left;
+      padding: 8px;
+    }
+  }
+
+  .team-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    .ant-typography {
+      margin-bottom: 0;
+    }
+
+    .user-details {
+      display: flex;
+      align-items: center;
+      padding-right: 10px;
+    }
+
+    .time-spent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    .stats {
+      display: flex;
+      padding-left: 10px;
+      justify-content: flex-end;
+
+      & > div {
+        margin: 0 20px;
+
+        h5 {
+          text-align: center;
+        }
+      }
+    }
+
+    & > div {
+      flex: 1 1 0px;
+    }
+  }
+}
+
+.export-modal,
+.assign-modal {
+  .ant-modal-body {
+    .ant-typography {
+      margin-bottom: 5px;
+    }
+
+    .ant-select {
+      width: 100%;
+    }
+  }
+}
+
+// .share-modal .ant-modal-body {
+//   & > div {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin-bottom: 15px;
+
+//     & > div {
+//       display: flex;
+//       align-items: center;
+
+//       span {
+//         margin-left: 10px;
+//         cursor: pointer;
+//       }
+//     }
+//   }
+
+//   input {
+//     cursor: auto;
+//   }
+// }
+
+.add-edit-test-run {
+  & > div:first-child {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+
+    & > span {
+      font-size: 18px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    & > h4 {
+      margin: 0;
+    }
+  }
+
+  // .test-cases {
+  //   margin-top: 10px;
+  //   margin-bottom: 40px;
+  // }
+}
+
+.wizard-modal {
+  .ant-modal-body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .ant-row,
+  .ant-col {
+    height: 100%;
+  }
+
+  .ant-col {
+    padding-top: 20px;
+  }
+
+  .left-container {
+    display: flex;
+    flex-direction: column;
+
+    .filter-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    & > .ant-typography {
+      margin-bottom: 5px;
+    }
+
+    .small-details > span {
+      font-size: 14px;
+      color: gray;
+    }
+
+    .ant-input {
+      margin: 15px 0;
+      width: 95%;
+    }
+
+    .overflow-container {
+      overflow-y: auto;
+      padding-right: 17px;
+    }
+
+    & > *:not(.overflow-container) {
+      padding-right: 15px;
+    }
+
+    .test-plans-and-cases {
+      & > div {
+        margin-bottom: 5px;
+      }
+
+      .ant-collapse-header {
+        padding: 0;
+        margin-top: 5px;
+        margin-left: 8px;
+        margin-bottom: 16px;
+
+        h5 {
+          margin-bottom: 0;
+        }
+      }
+
+      .ant-collapse-content-box {
+        padding-top: 0;
+        padding-left: 5px;
+      }
+
+      .cases > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid @border-bottom-color;
+        padding: 6px 0;
+        padding-left: 10px;
+        cursor: pointer;
+
+        .ant-typography {
+          margin-bottom: 0;
+        }
+
+        .selected-title {
+          color: #65738a;
+          font-weight: bold;
+        }
+
+        & > div:first-child {
+          flex: 2;
+        }
+
+        & > div:last-child {
+          flex: 1;
+          text-align: end;
+        }
+      }
+    }
+  }
+
+  .middle-container {
+    overflow-y: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-left: 1px solid @border-bottom-color;
+    border-right: 1px solid @border-bottom-color;
+
+    .empty-container {
+      height: 100%;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    & > div:first-child {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .testplan-name {
+      margin-bottom: 0;
+      font-size: 13px;
+    }
+
+    .testcase-name {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .status-btn-hover {
+      margin-right: 10px;
+    }
+
+    .test-case-details {
+      & > div > div:first-child {
+        margin-bottom: 0;
+        font-weight: bold;
+        font-size: 15px;
+      }
+
+      & > div {
+        margin-bottom: 10px;
+      }
+
+      .all-steps {
+        margin-top: 15px;
+
+        & > div {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 20px;
+
+          & > span {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: @table-header-bg;
+            margin-right: 20px;
+          }
+
+          & > div {
+            flex: 1;
+
+            & > div:first-child {
+              margin-bottom: 6px;
+            }
+
+            & > div:nth-child(2) {
+              font-size: 15px;
+              margin-bottom: 6px;
+              font-weight: bold;
+            }
+
+            .action-area {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 15px;
+              background-color: @table-header-bg;
+              border-radius: 5px;
+              width: 100%;
+
+              input {
+                margin: 10px 0 15px 0;
+                border-color: #54627a;
+              }
+
+              .attachments {
+                display: flex;
+                flex-wrap: wrap;
+
+                img {
+                  height: 100px;
+                  width: 100px;
+                  object-fit: cover;
+                }
+              }
+
+              .button {
+                color: @heading-color;
+                background: transparent;
+              }
+
+              .button-active {
+                margin: 0;
+                pointer-events: none;
+              }
+
+              button.passed:hover {
+                border-color: @passed-status;
+                color: @passed-status;
+              }
+              button.failed:hover {
+                border-color: @failed-status;
+                color: @failed-status;
+              }
+              button.blocked:hover {
+                border-color: @blocked-status;
+                color: @blocked-status;
+              }
+              button.pending:hover {
+                border-color: @pending-status;
+                color: @pending-status;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .right-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    overflow-y: auto;
+
+    h5 {
+      margin-bottom: 20px;
+    }
+
+    .infinite-scroll-spinner-container {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      & > div {
+        margin-bottom: 0;
+      }
+
+      & > div:first-child {
+        font-size: 16px;
+        margin-right: 35px;
+      }
+
+      & + div {
+        color: gray;
+      }
+    }
+
+    & > div {
+      padding-right: 20px;
+    }
+  }
+}
+
+.add-run-result-modal .ant-modal-content {
+  .ant-modal-body {
+    & > .ant-typography {
+      color: gray;
+      margin-top: -5px;
+    }
+
+    & > div > div > div {
+      margin-bottom: 15px;
+
+      & > .ant-typography {
+        margin-bottom: 3px;
+        font-weight: bold;
+      }
+    }
+
+    .ant-picker {
+      width: 100%;
+    }
+  }
+}
+
+.spinner-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 300px;
+}
+
+.testcase-status-detail-modal .ant-modal-body {
+  .data {
+    margin-bottom: 15px;
+
+    .sub-data {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      .download-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+      }
+    }
+
+    .data-header {
+      margin-bottom: 0;
+      color: gray;
+    }
+
+    .ant-collapse-header {
+      padding: 5px 0;
+
+      & > span:first-child {
+        vertical-align: 2px;
+      }
+    }
+
+    .ant-collapse-content-box {
+      padding-top: 0;
+      padding-bottom: 0;
+
+      .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .text-gray {
+          margin-bottom: 0;
+          color: gray;
+        }
+      }
+    }
+  }
+}

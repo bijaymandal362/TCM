@@ -1,0 +1,19 @@
+.float-label {
+  position: relative !important;
+  margin-bottom: 12px !important;
+}
+
+.label {
+  font-size: 15px !important;
+  font-weight: normal !important;
+  position: absolute !important;
+  pointer-events: none !important;
+  left: 7% !important;
+  top: 15px !important;
+  transition: 0.2s ease all !important;
+}
+
+.label-float {
+  top: 1px !important;
+  font-size: 10px !important;
+}

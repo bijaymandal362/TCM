@@ -1,0 +1,93 @@
+.tree-structure {
+  border-right: 1px solid @border-bottom-color;
+  min-height: 85vh;
+
+  button {
+    margin-top: 5px;
+    margin-bottom: 25px;
+  }
+
+  .action-triggers {
+    margin: 0 20px;
+    display: inline-block;
+    visibility: hidden;
+
+    .action-button {
+      margin: 0 7px;
+      font-size: 15px;
+      vertical-align: text-bottom;
+    }
+  }
+
+  .ant-tree-treenode {
+    &:hover .action-triggers {
+      visibility: visible;
+    }
+  }
+
+  .test-case-repo {
+    & > div:first-child {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    .ant-tree-treenode {
+      padding: 0px;
+      font-size: 14px;
+      height: auto;
+      padding: 1px 0 4px 0;
+
+      .ant-tree-title {
+        font-weight: normal;
+      }
+    }
+  }
+
+  .spin {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+}
+
+.main-layout {
+  border-left: 1px solid @border-bottom-color;
+  padding: 10px 20px;
+
+  .header {
+    div:last-child {
+      margin-left: 3px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.add-edit-layout {
+  border-left: 1px solid @border-bottom-color;
+  padding: 10px 20px;
+
+  .inputs {
+    width: 65%;
+  }
+
+  .minus-icon {
+    color: @danger-color;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .input-search-and-buttons {
+    display: flex;
+    
+    div {
+      display: flex;
+      margin-left: 20px;
+
+      button:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.custom__tree {
+  .tree__title {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .ant-tree-treenode {
+    display: flex;
+    padding: 0.5rem 0;
+
+    align-items: center;
+    font-size: @font-md;
+    font-weight: @semi-bold;
+    .tree__icons {
+      visibility: hidden;
+      button {
+        border: none;
+      }
+    }
+  }
+
+  .ant-tree-treenode:hover,
+  .ant-tree-treenode-selected {
+    .tree__icons {
+      visibility: visible;
+      button {
+        border: none;
+      }
+    }
+  }
+}
+
+.main-title {
+  font-size: 1rem;
+  font-weight: 800;
+  opacity: 0.65;
+}
+
+.steps-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: "#393939";
+}
+.title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.65;
+}
+
+.sub-title {
+  font-size: 0.85rem;
+}
+
+.step-position {
+  padding: 0.125rem 0.5rem;
+  display: block;
+  // margin-right: 0.75rem;
+  // border-radius: 0.25rem;
+  color: #636363;
+  // background: #f3f3f3;
+}
+.tab-scroll {
+  overflow-y: scroll;
+}

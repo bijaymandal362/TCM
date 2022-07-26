@@ -1,0 +1,30 @@
+.page__wrapper {
+  margin: 70px 0 0 250px;
+  transition: all 0.3s ease;
+  padding: 1rem;
+  &.expanded {
+    margin-left: 80px;
+    // @include lg{
+    //     margin-left: 0;
+    // }
+  }
+
+  &.nosidebar {
+    margin-left: 0px;
+  }
+
+  @media only screen and (max-width: @screen-md-max) {
+    margin-left: 0px !important;
+  }
+
+  // @include lg{
+  //     margin-left: 0;
+  // }
+}
+
+// .ant-menu-horizontal{
+//     .ant-menu-item{
+//         &:first-child{
+//             padding-left: 0px !important;
+//         }}
+// }

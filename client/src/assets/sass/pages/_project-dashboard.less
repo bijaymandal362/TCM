@@ -1,0 +1,152 @@
+.projectDashboardContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.projectDashboardContainer .projectDashboardChildren {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // background-color: #283142;
+  background-color: @component-background;
+
+  //@border-bottom-color #283142
+  // color: white;
+  color: @heading-color;
+  width: 30%;
+  padding: 2vh;
+  // margin-right: 3.33%;
+  border-radius: 25px;
+}
+.projectDashboardContainer .projectDashboardChildren .pdl {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+}
+.projectDashboardContainer .testCases {
+  margin-right: 3.33%;
+}
+.projectDashboardContainer .testPlan {
+  margin-right: 3.33%;
+}
+
+.projectDashboardContainer .testRun {
+  margin-right: 0%;
+}
+
+.projectDashboardContainer .testCases .pdr div {
+  font-size: 40px;
+  color: #6e54ea;
+}
+
+.projectDashboardContainer .testPlan .pdr div {
+  font-size: 40px;
+  color: #51dcad;
+}
+
+.projectDashboardContainer .testRun .pdr div {
+  font-size: 40px;
+  color: #ff4b62;
+}
+
+@media screen and (max-width: 480px) {
+  .projectDashboardContainer {
+    // display: flex;
+    flex-direction: column;
+  }
+  .projectDashboardContainer .projectDashboardChildren {
+    width: 100%;
+    margin-top: 5px;
+    padding: 2vh;
+  }
+}
+
+.PDashboardContainer2 {
+  display: flex;
+  color: white;
+  margin-top: 15px;
+}
+
+.PDashboardContainer2 .PDashboardSubContainer1 {
+  width: 66.66%;
+  // margin-right: 0.33%;
+  background-color: @component-background;
+  border-radius: 25px;
+  color: @heading-color;
+}
+
+.PDashboardContainer2 .PDashboardSubContainer1 .testCaseSubContainer1 {
+  display: flex;
+  justify-content: space-between;
+  padding: 2vh;
+}
+
+.PDashboardContainer2 .PDashboardSubContainer2 {
+  width: 30%;
+  margin-left: 5%;
+  background-color: @component-background;
+  border-radius: 25px;
+  color: @heading-color;
+}
+
+.PDashboardContainer2 .PDashboardSubContainer2 .testRunSubContainer1 {
+  display: flex;
+  justify-content: space-between;
+  padding: 2vh;
+}
+
+@media only screen and (max-width: 700px) {
+  .PDashboardContainer2 {
+    display: flex;
+    flex-direction: column;
+  }
+  .PDashboardContainer2 .PDashboardSubContainer1 {
+    width: 100%;
+    // margin-top: 15px;
+  }
+  .PDashboardContainer2 .PDashboardSubContainer2 {
+    margin-left: 0%;
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+.project-dashboard-table-wrapper {
+  margin-top: 15px;
+  background-color: @component-background;
+  padding: 12px;
+  color: @heading-color;
+}
+
+.project-dashboard-table-wrapper {
+  & .ant-table-thead > tr > th {
+    font-weight: 700;
+  }
+}
+
+.project-dashboard-table-wrapper .ant-table-thead > tr > th {
+  font-weight: 600;
+}
+
+.top-spinner {
+  margin: 20px 0;
+  margin-bottom: 20px;
+  // padding: 30px 50px;
+  text-align: center;
+  // background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+.no-data-to-display {
+  text-align: center;
+  text-justify: center;
+  line-height: 200px;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 10px;
+  }
+}
